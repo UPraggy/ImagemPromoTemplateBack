@@ -1,0 +1,25 @@
+{
+  "name": "backclientes",
+  "version": "1.0.0",
+  "description": "BackEndCliente ",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto-js": "^4.2.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "oracledb": "^6.2.0",
+    "pg": "^8.11.3",
+    "selenium-webdriver": "^4.17.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
