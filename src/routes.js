@@ -6,10 +6,9 @@ const routes = express.Router();
 
 const controllers = {
     'GeraImagem': require('./controllers/GeraImagem.js'),
-    'ConsultaProdTiraTeima': require('./controllers/ConsultaProdTiraTeima.js'),
     'GetPromocaoEArquivosRevista': require('./controllers/GetPromocaoEArquivosRevista.js'),
     'ConsultaColecoesRevistas': require('./controllers/ConsultaColecoesRevistas.js'),
-    
+    'GeraPdfPromocaoRevista' : require('./controllers/GeraPdfPromocaoRevista.js'),
   };
   
 Object.keys(controllers).forEach(route => {

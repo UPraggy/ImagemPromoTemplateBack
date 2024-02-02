@@ -3,13 +3,11 @@ const dotenv = require('dotenv');
 
 dotenv.config()
 
-const pastaCloud = process.env.CLOUDPASTA
-
 const {IPSERVIDOR,PORTASERVIDOR} = process.env
 
 
+
 const {fetchFunc} = require('./fetchFunc.js');
-const fs = require('fs')
 
 exports.REST = async (req, res) => {
     try {
@@ -34,9 +32,9 @@ exports.REST = async (req, res) => {
                     produtos_pagina AS NUMEROREF  
                 FROM ERP_PRODUTOS 
                 WHERE 
-                    produtos_revista = '${CODREVISTA}'
+                    produtos_revista = '${CODREVISTA}' 
                 GROUP BY produtos_num_fornecedor, produtos_observacao, produtos_descricao, produtos_preco, produtos_pagina
-                order by produtos_pagina`
+                order by produtos_pagina` 
                 
         const result = await db.query(selectTMP);
     
@@ -53,7 +51,7 @@ exports.REST = async (req, res) => {
             val.descbasica = val.descbasica.split("-")
             val.descbasica.pop()
             val.descbasica = val.descbasica.join(" ")
-
+            console.log("CARREGANDO SKU "+val.sku)
             await fetchFunc.fetchPost(`http://${IPSERVIDOR}:${PORTASERVIDOR}/GeraImagem`, {URLIMAGE: URLIMAGE+val.sku+".jpg", 
             DESCBASICA: val.descbasica, 
             NUMEROREF: val.numeroref, 
@@ -61,16 +59,14 @@ exports.REST = async (req, res) => {
             PORVALOR: val.porvalor,
             CODSKU: val.sku,
             FOLDER: dataFormatada,
-            NOMEREV: revistNome
+            NOMEREV: revistNome,
+            DESCONTO: DESCONTO,
+            CODREVISTA: CODREVISTA
         })
-            .then(console.log("SUCESSO REF "+val.numeroref))
+            .then(console.log("SUCESSO SKU "+val.sku))
         }
-    
-        if (produtosList.length === 0) {
-            return res.json({ Error: `Nenhum produto encontrado.` });
-        } else {
-            return res.json({MESSAGE: "SUCCESSFULL"});
-        }
+
+        return res.json({MESSAGE: "SUCCESSFULL"});
     }
 
     catch (error) {
