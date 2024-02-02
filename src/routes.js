@@ -9,7 +9,7 @@ const controllers = {
     'ConsultaProdTiraTeima': require('./controllers/ConsultaProdTiraTeima.js'),
     'GetPromocaoEArquivosRevista': require('./controllers/GetPromocaoEArquivosRevista.js'),
     'ConsultaColecoesRevistas': require('./controllers/ConsultaColecoesRevistas.js'),
-    
+    'GeraPdfPromocaoRevista' : require('./controllers/GeraPdfPromocaoRevista.js'),
   };
   
 Object.keys(controllers).forEach(route => {
