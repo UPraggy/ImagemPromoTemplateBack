@@ -7,9 +7,6 @@ exports.REST = async (req, res) => {
 
         let caminho = await `/var/www/html/GeraPromo_Pdf_Foto/imagens_promo_geradas/GeraPdf/`;
 
-        if (!fs.existsSync(caminho)){
-            fs.mkdirSync(caminho);
-        }
         //PERMISSÃO DE PASTA PARA APAGAR E CRIAR ARQUIVOS
         exec(`echo super | sudo -S chmod -R 777 ${caminho}`, (error, stdout, stderr) => {});
         

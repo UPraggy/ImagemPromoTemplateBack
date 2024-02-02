@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 dotenv.config()
 
 const {IPSERVIDOR,PORTAFRONT} = process.env
-const { exec, spawn } = require('child_process');
+const { exec } = require('child_process');
 
 exports.REST = async (req, res) => {
 
